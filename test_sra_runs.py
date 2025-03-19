@@ -28,8 +28,8 @@ with open(SRA_LIST_FILE, "r") as file:
             print(f"Error: FASTQ files missing for {sra_id}!")
             break  
        
-        os.remove(fastq_1)
-        os.remove(fastq_2)
+        #os.remove(fastq_1)
+        #os.remove(fastq_2)
 
         print(f"Finished processing {sra_id}.")
 
