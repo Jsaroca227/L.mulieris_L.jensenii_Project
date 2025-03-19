@@ -7,10 +7,9 @@ OUTPUT_DIR = "sra_test_downloads"
 os.system(f"rm -r {OUTPUT_DIR}")
 
 os.makedirs(OUTPUT_DIR, exist_ok=True)
-
 with open(SRA_LIST_FILE, "r") as file:
     for i, sra_id in enumerate(file):
-        if i >= 2:  # Limit to first two SRAs
+        if i >= 6:  # Limit to first two SRAs
             break
         sra_id = sra_id.strip()
         print(f"Processing {sra_id}...")
