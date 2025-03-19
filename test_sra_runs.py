@@ -4,6 +4,8 @@ import subprocess
 SRA_LIST_FILE = "test_sra.txt"
 OUTPUT_DIR = "sra_test_downloads"
 
+os.system(f"rm -r {OUTPUT_DIR}")
+
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 with open(SRA_LIST_FILE, "r") as file:
@@ -28,8 +30,9 @@ with open(SRA_LIST_FILE, "r") as file:
             print(f"Error: FASTQ files missing for {sra_id}!")
             break  
        
-        #os.remove(fastq_1)
-        #os.remove(fastq_2)
+        #os.system(f'rm {fastq_1}')
+
+        #os.system(f'rm {fastq_2}')
 
         print(f"Finished processing {sra_id}.")
 
