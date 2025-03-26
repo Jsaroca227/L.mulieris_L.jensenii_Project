@@ -6,10 +6,11 @@ SRA_LIST_FILE = "test_sra.txt"
 OUTPUT_DIR = "sra_test_downloads"
 LOG_FILE = "processed_sra.log"
 
-#loads the processed SRA in a log fileprocessed_sra = set()
+#loads the processed SRA in a log file
+processed_sra = set()
 if os.path.exists(LOG_FILE):
     with open(LOG_FILE, "r") as log:
-    processed_sra.update(log.read().splitlines())
+        processed_sra.update(log.read().splitlines())
 
 while True:
     with open(SRA_LIST_FILE, "r") as file:
@@ -58,5 +59,6 @@ while True:
     if len(processed_sra) >= 482:
         print("All 482 SRA IDs have been processed. Exiting.")
         break
+
 
 print("Test complete!")
