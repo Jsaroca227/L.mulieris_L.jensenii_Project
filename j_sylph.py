@@ -6,10 +6,13 @@ SRA_LIST_FILE = "test_sra.txt"
 OUTPUT_DIR = "sra_test_downloads"
 LOG_FILE = "processed_sra.log"
 
-#loads the processed SRA in a log fileprocessed_sra = set()
+
+#loads the processed SRA in a log file
+
+processed_sra = set()
 if os.path.exists(LOG_FILE):
     with open(LOG_FILE, "r") as log:
-    processed_sra.update(log.read().splitlines())
+        processed_sra.update(log.read().splitlines())
 
 while True:
     with open(SRA_LIST_FILE, "r") as file:
@@ -24,8 +27,8 @@ while True:
     sra_dir = os.path.join(OUTPUT_DIR, sra_id)
     os.makedirs(sra_dir, exist_ok=True)
 
-    #downloads the SRA
-    os.system(f"prefetch {sra_id} -O {sra_dir}")
+    #download SRA from NCBI
+    os.system(f"https://sra-pub-run-odp.s3.amazonaws.com/sra/{sra_id}/{sra_id}")
 
     #converts it to a fastqfile
     os.system(f"fasterq-dump --split-files --outdir {sra_dir} {os.path.join(sra_dir, sra_id)}")
