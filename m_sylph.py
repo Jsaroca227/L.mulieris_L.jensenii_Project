@@ -2,7 +2,7 @@
 
 import os
 
-SRA_LIST_FILE = "test_sra.txt"
+SRA_LIST_FILE = "sra_run_sample.txt"
 OUTPUT_DIR = "sra_test_downloads"
 LOG_FILE = "processed_sra.log"
 
@@ -28,6 +28,7 @@ while True:
     #downloads the SRA
     os.system(f"prefetch {sra_id} -O {sra_dir}")
 
+    print("Running fasterq-dump!")
     #converts it to a fastqfile
     os.system(f"fasterq-dump --split-files --outdir {sra_dir} {os.path.join(sra_dir, sra_id)}")
 
@@ -43,7 +44,7 @@ while True:
         break
 
    #processes ANI with sylph
-    os.system(f"sylph compare -q {fastq_1} -r reference_genomes/*.fastq > {sra_dir}/{sra_id}_ani.txt")
+    #os.system(f"sylph compare -q {fastq_1} -r reference_genomes/*.fastq > {sra_dir}/{sra_id}_ani.txt")
 
     #log the successful processing of sylph/ANI
     with open(LOG_FILE, "a") as log:
@@ -51,14 +52,14 @@ while True:
         processed_sra.add(sra_id)
 
     #remove SRA for free data purposes
-    os.system(f"rm -r {sra_dir}")
+    #os.system(f"rm -r {sra_dir}")
 
-    print(f"Finished processing {sra_id} and removed directory.")
+    #print(f"Finished processing {sra_id} and removed directory.")
 
-#checks if all 482 SRA has been processed, if not contine the loop
-    if len(processed_sra) >= 482:
+    #checks if all 482 SRA has been processed, if not contine the loop
+    '''if len(processed_sra) >= 482:
         print("All 482 SRA IDs have been processed. Exiting.")
-        break
+        break'''
 
 
 print("Test complete!")
