@@ -14,7 +14,8 @@ if os.path.exists(LOG_FILE):
         processed_sra = set(log.read().splitlines())
 
 with open(SRA_LIST_FILE,"r") as file:
-    sra_list = file.read().splitlines()
+    sra_list = file.read()
+    sra_list = sra_list.splitlines()
 
 SRA_LIST_LENGTH = len(sra_list)
 
@@ -31,7 +32,8 @@ while True:
         processing = []
         if os.path.exists("processing.log"):
             with open("processing.log","r") as file:
-                processing = file.splitlines()
+                processing = file.read()
+                processing = processing.splitlines()
         if (sra_id_temp in processed_sra) or (sra_id_temp in processing):
             continue #skips the SRA IDs that have already been processed
         else:
@@ -70,7 +72,7 @@ while True:
 
     #processes ANI with sylph
     os.system(f"sylph sketch -c 75 -1 {fastq_1} -2 {fastq_2} -d {sra_dir}")
-    os.system(f"sylph query --min-number-kmers 20 >> results.tsv {SYLPH_DB_PATH} {fastq_1 + ".paired.sylsp"}")
+    os.system(f"sylph profile --min-number-kmers 3 >> results.tsv {SYLPH_DB_PATH} {fastq_1 + ".paired.sylsp"}")
 
 
     #log the successful processing of sylph/ANI
