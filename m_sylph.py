@@ -72,7 +72,7 @@ while True:
 
     #processes ANI with sylph
     os.system(f"sylph sketch -c 75 -1 {fastq_1} -2 {fastq_2} -d {sra_dir}")
-    os.system(f"sylph query --min-number-kmers 20 >> results.tsv {SYLPH_DB_PATH} {fastq_1 + ".paired.sylsp"}")
+    os.system(f"sylph profile --min-number-kmers 3 >> results.tsv {SYLPH_DB_PATH} {fastq_1 + ".paired.sylsp"}")
 
 
     #log the successful processing of sylph/ANI
