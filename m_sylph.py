@@ -2,7 +2,7 @@
 
 import os
 
-SRA_LIST_FILE = "mb_test"
+SRA_LIST_FILE = "sra_run_sample.txt"
 OUTPUT_DIR = "sra_test_downloads"
 LOG_FILE = "processed_sra.log"
 SYLPH_DB_PATH = "/home/2025/mbates5/L.mulieris_L.jensenii_Project/sylph_db/database.syldb" ### CHANGE THIS TO YOUR PATH WHEN RUNNING
@@ -72,7 +72,7 @@ while True:
 
     #processes ANI with sylph
     os.system(f"sylph sketch -c 75 -1 {fastq_1} -2 {fastq_2} -d {sra_dir}")
-    os.system(f"sylph profile --min-number-kmers 3 >> results.tsv {SYLPH_DB_PATH} {fastq_1 + ".paired.sylsp"}")
+    os.system(f"sylph profile --min-number-kmers 5 >> results.tsv {SYLPH_DB_PATH} {fastq_1 + ".paired.sylsp"}")
 
 
     #log the successful processing of sylph/ANI
