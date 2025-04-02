@@ -12,9 +12,9 @@ If you need to download conda: wget https://repo.anaconda.com/miniconda/Minicond
 If you need to download Sylph: conda install -c conda-forge -c bioconda sylph
 
 Dependencies:
-- Biopython
+- argparse
 - Sylph
 - NCBI datasets
 - os
-- pandas
+
 
