@@ -2,7 +2,7 @@
 
 import os
 
-SRA_LIST_FILE = "sra_run_sample.txt"
+SRA_LIST_FILE = "/home/2025/mbates5/L.mulieris_L.jensenii_Project/test_samples/mb_test"
 OUTPUT_DIR = "sra_test_downloads"
 LOG_FILE = "processed_sra.log"
 SYLPH_DB_PATH = "/home/2025/mbates5/L.mulieris_L.jensenii_Project/sylph_db/database.syldb" ### CHANGE THIS TO YOUR PATH WHEN RUNNING
@@ -45,8 +45,10 @@ while True:
         break
 
     print(f"Processing {sra_id}...", flush = True)
+    with open("results.tsv","a") as file:
+        file.write(sra_id + "\n")
     with open("processing.log",'a') as file:
-        file.write(f"{sra_id}")
+        file.write(f"{sra_id}\n")
 
     #creates the directory inside of the loop in order to store all things related to the SRA there
     sra_dir = os.path.join(OUTPUT_DIR, sra_id)
@@ -72,7 +74,7 @@ while True:
 
     #processes ANI with sylph
     os.system(f"sylph sketch -c 75 -1 {fastq_1} -2 {fastq_2} -d {sra_dir}")
-    os.system(f"sylph profile --min-number-kmers 5 >> results.tsv {SYLPH_DB_PATH} {fastq_1 + ".paired.sylsp"}")
+    os.system(f"sylph profile --min-number-kmers 1 >> results.tsv {SYLPH_DB_PATH} {fastq_1}.paired.sylsp")
 
 
     #log the successful processing of sylph/ANI
