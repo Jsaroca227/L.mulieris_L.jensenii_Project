@@ -1,6 +1,27 @@
 ##this code should contain the running of sylph
 
 import os
+import sys
+import argparse
+
+#function to parse command line arguments
+def check_arg(args=None):
+    parser = argparse.ArgumentParser(
+    description="ADD TITLE OF SCRIPT HERE (shows on help -h)")
+    parser.add_argument("-i", "--sra_file",
+    help="input file",
+    required=False) ## Change back to true
+    parser.add_argument("-p", "--path_db",
+    help="input of reference genome path",
+    required=False) ## Change back to true
+    return parser.parse_args(args)
+
+#retrieve command line arguments
+arguments = check_arg(sys.argv[1:])
+SRA_LIST_FILE = arguments.sra_file
+SYLPH_DB_PATH = arguments.path_db
+OUTPUT_DIR = "sra_test_downloads"
+LOG_FILE = "processed_sra.log"
 
 SRA_LIST_FILE = "/home/2025/mbates5/L.mulieris_L.jensenii_Project/test_samples/mb_test"
 OUTPUT_DIR = "sra_test_downloads"
