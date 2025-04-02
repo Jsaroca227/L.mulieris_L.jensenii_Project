@@ -13,8 +13,10 @@ If you need to download Sylph: conda install -c conda-forge -c bioconda sylph
 
 Dependencies:
 - argparse
-- Sylph
-- NCBI datasets
+- sys
 - os
+- NCBI Datasets
+- Sylph
+
 
 
