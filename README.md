@@ -9,7 +9,7 @@ To clone this directory: https://github.com/Jsaroca227/L.mulieris_L.jensenii_Pro
 
 If you need to download conda: wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 
-If you need to download sylph: conda install -c conda-forge -c bioconda sylph
+If you need to download Sylph: conda install -c conda-forge -c bioconda sylph
 
 Dependencies:
 - Biopython
