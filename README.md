@@ -10,8 +10,6 @@ Dependencies:
 - NCBI Datasets
 - Sylph
 
-  <img width="664" alt="Screenshot 2025-04-06 at 4 52 47 PM" src="https://github.com/user-attachments/assets/606f1057-6a8b-425f-9177-0e399687685a" />
-
 
 Getting Started:
 
@@ -30,4 +28,7 @@ NCBI link for L.jensenii: https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_00193
 
 NCBI link for L. mulieris: https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_042997415.1/
 
+General Overview:
+
+  <img width="664" alt="Screenshot 2025-04-06 at 4 52 47 PM" src="https://github.com/user-attachments/assets/606f1057-6a8b-425f-9177-0e399687685a" />
 
