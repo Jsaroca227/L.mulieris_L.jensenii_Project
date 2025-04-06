@@ -10,6 +10,9 @@ Dependencies:
 - NCBI Datasets
 - Sylph
 
+  <img width="664" alt="Screenshot 2025-04-06 at 4 52 47 PM" src="https://github.com/user-attachments/assets/606f1057-6a8b-425f-9177-0e399687685a" />
+
+
 Getting Started:
 
 1. To clone this directory: https://github.com/Jsaroca227/L.mulieris_L.jensenii_Project.git
