@@ -13,19 +13,26 @@ Both _L.mulleris_ and _L.jensenii_ are dominant members of the female urogenital
 
 **Getting Started:**
 
-1. Clone the dictionary
-```git clone https://github.com/Jsaroca227/L.mulieris_L.jensenii_Project.git```
+1. Clone the dictionary using git clone
 
-4. If you need to download conda: wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+```
+git clone https://github.com/Jsaroca227/L.mulieris_L.jensenii_Project.git
+```
+
+2. Download conda, if not installed already using wget
+
+```
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+```
    
-5. If you need to download Sylph: conda install -c conda-forge -c bioconda sylph
+3. Download Sylph, if not installed already using conda
 
-6. Sylph Toolkit: https://sylph-docs.github.io/sylph-cookbook/
-- This website provides useful information to understand and utilize Sylph
+```
+conda install -c conda-forge -c bioconda sylph
+```
 
-**General Overview:**
-
-  <img width="664" alt="Screenshot 2025-04-06 at 4 52 47 PM" src="https://github.com/user-attachments/assets/606f1057-6a8b-425f-9177-0e399687685a" />
+Sylph Toolkit: https://sylph-docs.github.io/sylph-cookbook/
+- For more information on Sylph
 
 
 **NCBI links to Reference Genomes:**
@@ -37,15 +44,16 @@ NCBI link for _L. mulieris_: https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_04
   Instructions to download the reference genome:
   1. Copy and paste the command from the "Dataset" tab of the NCBI link
   2. Unzip the dataset: unzip.ncbi_dataset
-  3. Create directories to differentiate databases
+  3. Create directories to differentiate databases; e.g.
      - "Jensenii_db"
      - "Mulieris_db"
 
 **Code and Test Data:**
 
+
 **Overwiew of Wrapper:**
 
-- Arguments: 2 command line arguments, -i accept file list and -p reference genome database path
+- Arguments: 2 command line arguments needed, -i accept file list and -p reference genome database path
 
 - Initialization: checks for processed SRAs and reads the list of SRA IDs from input file
 
@@ -60,15 +68,11 @@ Output of ANI score to results.tsv
 
 - Repetition: continue processing until all SRA IDs in the list are completed 
 
-
-**Arguments:**
-Input
-- SRA .txt file
-- Pathway to sketched reference genome database
+ <img width="664" alt="Screenshot 2025-04-06 at 4 52 47 PM" src="https://github.com/user-attachments/assets/606f1057-6a8b-425f-9177-0e399687685a" />
 
 
 **Overview of Output Files:**
-1. Processed_sra.log: lists the SRA ID that has been processed and completed from the file
-2. Proccesing.log: lists the SRA ID that is currently being processed in real time
-3. Result.tsv: lists the SRA ID with the corresponding Sylph, ANI results
+1. **Processed_sra.log**: lists the SRA ID that has been processed and completed from the file
+2. **Proccesing.log**: lists the SRA ID that is currently being processed in real time
+3. **Result.tsv**: lists the SRA ID with the corresponding Sylph, ANI results
 
