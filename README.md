@@ -13,13 +13,14 @@ Both _L.mulleris_ and _L.jensenii_ are dominant members of the female urogenital
 
 **Getting Started:**
 
-1. To clone the directory: git clone https://github.com/Jsaroca227/L.mulieris_L.jensenii_Project.git
+1. Clone the dictionary
+```git clone https://github.com/Jsaroca227/L.mulieris_L.jensenii_Project.git```
 
-2. If you need to download conda: wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+4. If you need to download conda: wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
    
-3. If you need to download Sylph: conda install -c conda-forge -c bioconda sylph
+5. If you need to download Sylph: conda install -c conda-forge -c bioconda sylph
 
-4. Sylph Toolkit: https://sylph-docs.github.io/sylph-cookbook/
+6. Sylph Toolkit: https://sylph-docs.github.io/sylph-cookbook/
 - This website provides useful information to understand and utilize Sylph
 
 **General Overview:**
