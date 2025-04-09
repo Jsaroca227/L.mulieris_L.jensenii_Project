@@ -19,21 +19,13 @@ Both _L.mulleris_ and _L.jensenii_ are dominant members of the female urogenital
 git clone https://github.com/Jsaroca227/L.mulieris_L.jensenii_Project.git
 ```
 
-2. Download conda, if not installed already using wget
-
+2. Download conda, if not installed already using the bash script
 ```
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-
-bash Miniconda3-latest-Linux-x86_64.sh
-
-'source ~/miniconda3/bin/activate
-
-conda --version
-
-conda update conda
+bash install_dependencies.sh
 ```
+- Please follow the prompts in the terminal
 
-3. Download Sylph, if not installed already using conda
+4. Download Sylph, if not installed already using conda
 
 ```
 conda install -c conda-forge -c bioconda sylph
@@ -49,18 +41,23 @@ NCBI link for _L.jensenii_: https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_001
 
 NCBI link for _L. mulieris_: https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_042997415.1/
 
-  Instructions to download the reference genome:
+- If you would like to use this wrapper for your own purposes, proceed with these following steps
+
+Instructions to download the reference genome:
   1. Copy and paste the command from the "Dataset" tab of the NCBI link
   2. Unzip the dataset: unzip.ncbi_dataset
   3. Create directories to differentiate databases; e.g.
-     - "Jensenii_db"
-     - "Mulieris_db"
+     - "Jensenii"
+     - "Mulieris"
 
 **Code and Test Data:**
-- Test data can be found in  L.mulieris_L.jensenii_Project/sample_dataset.txt
-- code can be found at L.mulieris_L.jensenii_Project/sylph_sb.py
-- Example command to run:
-  nohup python m_sylph.py -i L.mulieris_L.jensenii_Project/sample_dataset.txt -p L.mulieris_L.jensenii_Project/sylph_db/database.syldb &
+- Test data can be found in: L.mulieris_L.jensenii_Project/sample_dataset.txt
+- Code can be found in: L.mulieris_L.jensenii_Project/m_sylph.py
+
+Example command to run:
+```
+nohup python m_sylph.py -i L.mulieris_L.jensenii_Project/sample_dataset.txt -p L.mulieris_L.jensenii_Project/sylph_db/database.syldb &
+```
 
 **Overwiew of Wrapper:**
 
@@ -70,20 +67,18 @@ NCBI link for _L. mulieris_: https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_04
 
 - Iterates through SRA IDs for processing: skips already processed SRAs, creates a new directory for each SRA
 
-- Download and convert SRA to FASTQ: utilize prefetch to download the SRA file and using fasterq-dump to convert the SRA file to FASTQ format
+- Download and convert SRA to FASTQ: utilize prefetch to download the SRA file and utlize fasterq-dump to convert the SRA file to FASTQ format
 
-- Sylph and ANI Profiling: uses sylph sketch to generate sketches from the FASTQ files and runs sylph query to compare sketch against the reference database
-Output of ANI score to results.tsv
+- Sylph and ANI Profiling: utlize sylph sketch to generate sketches from the FASTQ files and runs sylph query to compare sketch against the reference genome database
+    - Output of ANI score to results.tsv
 
 - Log Processing: updates processed_sra.log with completed SRA ID and removes SRA directory to free up space
 
 - Repetition: continue processing until all SRA IDs in the list are completed 
 
- <img width="664" alt="Screenshot 2025-04-06 at 4 52 47 PM" src="https://github.com/user-attachments/assets/606f1057-6a8b-425f-9177-0e399687685a" />
-
-
 **Overview of Output Files:**
-1. **Processed_sra.log**: lists the SRA ID that has been processed and completed from the file
-2. **Proccesing.log**: lists the SRA ID that is currently being processed in real time
-3. **Result.tsv**: lists the SRA ID with the corresponding Sylph, ANI results
+
+1. Processed_sra.log: lists the SRA ID that has been processed and completed from the file
+2. Proccesing.log: lists the SRA ID that is currently being processed in real time
+3. Result.tsv: lists the SRA ID with the corresponding Sylph, ANI results
 
