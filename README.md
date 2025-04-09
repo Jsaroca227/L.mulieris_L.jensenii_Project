@@ -59,7 +59,7 @@ NCBI link for _L. mulieris_: https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_04
 - Test data can be found in  L.mulieris_L.jensenii_Project/sample_dataset.txt
 - code can be found at L.mulieris_L.jensenii_Project/sylph_sb.py
 - Example command to run:
-  nohup python sylph_sb.py -i L.mulieris_L.jensenii_Project/sample_dataset.txt -p L.mulieris_L.jensenii_Project/sylph_db/database.syldb &
+  nohup python m_sylph.py -i L.mulieris_L.jensenii_Project/sample_dataset.txt -p L.mulieris_L.jensenii_Project/sylph_db/database.syldb &
 
 **Overwiew of Wrapper:**
 
