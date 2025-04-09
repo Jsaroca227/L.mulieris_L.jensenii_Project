@@ -20,13 +20,8 @@ def check_arg(args=None):
 arguments = check_arg(sys.argv[1:])
 SRA_LIST_FILE = arguments.sra_file
 SYLPH_DB_PATH = arguments.path_db
-OUTPUT_DIR = "sra_test_downloads"
+OUTPUT_DIR = "sra_downloads"
 LOG_FILE = "processed_sra.log"
-
-SRA_LIST_FILE = "/home/2025/mbates5/L.mulieris_L.jensenii_Project/test_samples/mb_test"
-OUTPUT_DIR = "sra_test_downloads"
-LOG_FILE = "processed_sra.log"
-SYLPH_DB_PATH = "/home/2025/mbates5/L.mulieris_L.jensenii_Project/sylph_db/database.syldb" ### CHANGE THIS TO YOUR PATH WHEN RUNNING
 
 #loads the processed SRA in a log file
 processed_sra = set()
