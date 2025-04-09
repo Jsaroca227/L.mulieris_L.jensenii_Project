@@ -61,20 +61,31 @@ nohup python m_sylph.py -i L.mulieris_L.jensenii_Project/sample_dataset.txt -p L
 
 **Overwiew of Wrapper:**
 
-- Arguments: 2 command line arguments needed, -i accept file list and -p reference genome database path
+- Arguments
+  - 2 command line arguments needed
+    - -i SRA list .txt
+    - -p reference genome database pathway
 
-- Initialization: checks for processed SRAs and reads the list of SRA IDs from input file
+- Initialization
+  - Checks for processed SRAs and reads the list of SRA IDs from input file
 
-- Iterates through SRA IDs for processing: skips already processed SRAs, creates a new directory for each SRA
+- Iterates through SRA IDs for processing
+  - Skips already processed SRAs
+  - Begins to process through SRA ID in the list
 
-- Download and convert SRA to FASTQ: utilize prefetch to download the SRA file and utlize fasterq-dump to convert the SRA file to FASTQ format
+- Download and convert SRA to FASTQ
+  - Utlizie prefetch to download the SRA file and utlize fasterq-dump to convert the SRA file to FASTQ format
 
-- Sylph and ANI Profiling: utlize sylph sketch to generate sketches from the FASTQ files and runs sylph query to compare sketch against the reference genome database
+- Sylph and ANI Profiling
+  - Utilize sylph sketch to generate sketches from the FASTQ files and runs sylph query to compare sketch against the reference genome database
     - Output of ANI score to results.tsv
 
-- Log Processing: updates processed_sra.log with completed SRA ID and removes SRA directory to free up space
+- Processed SRA IDs
+  - Updates processed_sra.log with completed SRA ID
+  - Removes SRA directory to free up space
 
-- Repetition: continue processing until all SRA IDs in the list are completed 
+- Repetition
+  - Continues processing all SRA IDs in the list until it is completed 
 
 **Overview of Output Files:**
 
