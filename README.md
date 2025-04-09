@@ -79,6 +79,6 @@ nohup python m_sylph.py -i L.mulieris_L.jensenii_Project/sample_dataset.txt -p L
 **Overview of Output Files:**
 
 1. Processed_sra.log: lists the SRA ID that has been processed and completed from the file
-2. Proccesing.log: lists the SRA ID that is currently being processed in real time
+2. Processing.log: lists the SRA ID that is currently being processed in real time
 3. Result.tsv: lists the SRA ID with the corresponding Sylph, ANI results
 
