@@ -24,6 +24,10 @@ git clone https://github.com/Jsaroca227/L.mulieris_L.jensenii_Project.git
 ```
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 ```
+bash Miniconda3-latest-Linux-x86_64.sh
+source ~/miniconda3/bin/activate
+conda --version
+conda update conda
    
 3. Download Sylph, if not installed already using conda
 
