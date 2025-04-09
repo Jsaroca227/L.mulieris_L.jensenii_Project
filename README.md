@@ -24,6 +24,13 @@ git clone https://github.com/Jsaroca227/L.mulieris_L.jensenii_Project.git
 ```
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 ```
+bash Miniconda3-latest-Linux-x86_64.sh
+
+source ~/miniconda3/bin/activate
+
+conda --version
+
+conda update conda
    
 3. Download Sylph, if not installed already using conda
 
@@ -52,7 +59,7 @@ NCBI link for _L. mulieris_: https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_04
 - Test data can be found in  L.mulieris_L.jensenii_Project/sample_dataset.txt
 - code can be found at L.mulieris_L.jensenii_Project/sylph_sb.py
 - Example command to run:
-  nohup Python sylph_sb.py -i L.mulieris_L.jensenii_Project/sample_dataset.txt -p L.mulieris_L.jensenii_Project/sylph_db/database.syldb &
+  nohup python m_sylph.py -i L.mulieris_L.jensenii_Project/sample_dataset.txt -p L.mulieris_L.jensenii_Project/sylph_db/database.syldb &
 
 **Overwiew of Wrapper:**
 
