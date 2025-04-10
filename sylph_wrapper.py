@@ -108,6 +108,9 @@ while True:
         # process fastq with sylph
         os.system(f"sylph sketch -t {THREADS} -c 45 {single_fastq} -d {sra_dir}")
         os.system(f"sylph profile -u --read-seq-id 99 -t {THREADS} --min-number-kmers 2 >> results.tsv {SYLPH_DB_PATH} {single_fastq}.sylsp")
+    else:
+        print(f"FASTQ files not successfully generated for {sra_id}")
+        break
 
     # log sylph results
     with open(LOG_FILE, "a") as log:
