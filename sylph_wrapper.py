@@ -83,28 +83,31 @@ while True:
 
     # run fasterq-dump
     print(f"Running fasterq-dump on {sra_id}!", flush = True)
-    os.system(f"fasterq-dump --threads {THREADS} --split-files --outdir {sra_dir} {os.path.join(sra_dir, sra_id)}")
+    if os.path.exists(os.path.join(sra_dir, sra_id)):
+        os.system(f"fasterq-dump --threads {THREADS} --split-files --outdir {sra_dir} {os.path.join(sra_dir, sra_id)}")
+    elif os.path.exists(os.path.join(sra_dir, sra_id, sra_id + '.sralite')):
+        os.system(f"fasterq-dump --threads {THREADS} --split-files --outdir {sra_dir} {os.path.join(sra_dir, sra_id, sra_id + '.sralite')}")
+    else:
+        print(f"SRA failed to download.")
+        break
     
-    # define path of the fastq file
+    # define path of the fastq files
     fastq_1 = f"{sra_dir}/{sra_id}_1.fastq"
     fastq_2 = f"{sra_dir}/{sra_id}_2.fastq"
 
+    single_fastq = f"{sra_dir}/{sra_id}.fastq"
+
     # statments for debugging purposes, now supports sralite files
     if os.path.exists(fastq_1) and os.path.exists(fastq_2):
-        print(f"FASTQ files generated successfully for {sra_id}!", flush = True)
-    else:
-        print(f"Error: FASTQ files missing for {sra_id}, attempting .sralite!", flush = True)
-        os.system(f"fasterq-dump --threads {THREADS} --split-files --outdir {sra_dir} {os.path.join(sra_dir, sra_id, sra_id + '.sralite')}")
-    if os.path.exists(fastq_1) and os.path.exists(fastq_2):
-        print(f"FASTQ files generated successfully for {sra_id}!", flush = True)
-    else:
-        print(f"Error: FASTQ files missing for {sra_id}!", flush = True)
-        break
-
-    # process SRA with sylph
-    os.system(f"sylph sketch -t {THREADS} -c 45 -1 {fastq_1} -2 {fastq_2} -d {sra_dir}")
-    os.system(f"sylph profile -u --read-seq-id 99 -t {THREADS} --min-number-kmers 2 >> results.tsv {SYLPH_DB_PATH} {fastq_1}.paired.sylsp")
-
+        print(f"Paired end FASTQ files generated successfully for {sra_id}!", flush = True)
+        # process fastq with sylph
+        os.system(f"sylph sketch -t {THREADS} -c 45 -1 {fastq_1} -2 {fastq_2} -d {sra_dir}")
+        os.system(f"sylph profile -u --read-seq-id 99 -t {THREADS} --min-number-kmers 2 >> results.tsv {SYLPH_DB_PATH} {fastq_1}.paired.sylsp")
+    elif os.path.exists(single_fastq):
+        print(f"Single end FASTQ files generated successfully for {sra_id}!", flush = True)
+        # process fastq with sylph
+        os.system(f"sylph sketch -t {THREADS} -c 45 {single_fastq} -d {sra_dir}")
+        os.system(f"sylph profile -u --read-seq-id 99 -t {THREADS} --min-number-kmers 2 >> results.tsv {SYLPH_DB_PATH} {single_fastq}.sylsp")
 
     # log sylph results
     with open(LOG_FILE, "a") as log:
@@ -121,7 +124,7 @@ while True:
     # remove SRA for free data purposes
     os.system(f"rm -r {sra_dir}")
 
-    print(f"Finished processing {sra_id} and removed directory.", flush = True)
+    print(f"Finished processing {sra_id} and removed directory.\n", flush = True)
 
     # checks if all SRAs have been processed
     if len(processed_sra) >= SRA_LIST_LENGTH:
