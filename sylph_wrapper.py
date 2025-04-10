@@ -84,12 +84,18 @@ while True:
     print(f"Running fasterq-dump on {sra_id}!", flush = True)
     #converts it to a fastqfile
     os.system(f"fasterq-dump --threads {THREADS} --split-files --outdir {sra_dir} {os.path.join(sra_dir, sra_id)}")
-
+    
     #defines the path of the fastq file
     fastq_1 = f"{sra_dir}/{sra_id}_1.fastq"
     fastq_2 = f"{sra_dir}/{sra_id}_2.fastq"
 
     #statments for debugging purposes
+    if os.path.exists(fastq_1) and os.path.exists(fastq_2):
+        print(f"FASTQ files generated successfully for {sra_id}!", flush = True)
+    else:
+        print(f"Error: FASTQ files missing for {sra_id}, attempting .sralite!", flush = True)
+        os.system(f"fasterq-dump --threads {THREADS} --split-files --outdir {sra_dir} {os.path.join(sra_dir, sra_id, sra_id + ".sralite")}")
+
     if os.path.exists(fastq_1) and os.path.exists(fastq_2):
         print(f"FASTQ files generated successfully for {sra_id}!", flush = True)
     else:
