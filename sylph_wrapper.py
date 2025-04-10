@@ -8,18 +8,26 @@ import argparse
 def check_arg(args=None):
     parser = argparse.ArgumentParser(
     description="ADD TITLE OF SCRIPT HERE (shows on help -h)")
+
     parser.add_argument("-i", "--sra_file",
     help="input file",
-    required=False) ## Change back to true
+    required=True)
+
     parser.add_argument("-p", "--path_db",
     help="input of reference genome path",
-    required=False) ## Change back to true
+    required=True)
+
+    parser.add_argument("-t", "--threads",
+    help="number of threads to use",
+    required=True)
+
     return parser.parse_args(args)
 
 #retrieve command line arguments
 arguments = check_arg(sys.argv[1:])
 SRA_LIST_FILE = arguments.sra_file
 SYLPH_DB_PATH = arguments.path_db
+THREADS = arguments.threads
 OUTPUT_DIR = "sra_downloads"
 LOG_FILE = "processed_sra.log"
 
@@ -75,7 +83,7 @@ while True:
 
     print(f"Running fasterq-dump on {sra_id}!", flush = True)
     #converts it to a fastqfile
-    os.system(f"fasterq-dump --split-files --outdir {sra_dir} {os.path.join(sra_dir, sra_id)}")
+    os.system(f"fasterq-dump --threads {THREADS} --split-files --outdir {sra_dir} {os.path.join(sra_dir, sra_id)}")
 
     #defines the path of the fastq file
     fastq_1 = f"{sra_dir}/{sra_id}_1.fastq"
@@ -89,8 +97,8 @@ while True:
         break
 
     #processes ANI with sylph
-    os.system(f"sylph sketch -c 75 -1 {fastq_1} -2 {fastq_2} -d {sra_dir}")
-    os.system(f"sylph profile --min-number-kmers 1 >> results.tsv {SYLPH_DB_PATH} {fastq_1}.paired.sylsp")
+    os.system(f"sylph sketch -t {THREADS} -c 45 -1 {fastq_1} -2 {fastq_2} -d {sra_dir}")
+    os.system(f"sylph profile -t {THREADS} --min-number-kmers 1 >> results.tsv {SYLPH_DB_PATH} {fastq_1}.paired.sylsp")
 
 
     #log the successful processing of sylph/ANI
