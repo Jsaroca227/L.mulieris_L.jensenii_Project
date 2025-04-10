@@ -56,7 +56,7 @@ Instructions to download the reference genome:
 
 Example command to run:
 ```
-nohup python m_sylph.py -i L.mulieris_L.jensenii_Project/sample_dataset.txt -p L.mulieris_L.jensenii_Project/sylph_db/database.syldb &
+nohup python m_sylph.py -i L.mulieris_L.jensenii_Project/sample_dataset.txt -p L.mulieris_L.jensenii_Project/sylph_db/database.syldb -t 5 &
 ```
 
 **Overwiew of Wrapper:**
