@@ -49,6 +49,38 @@ Instructions to download the reference genome:
   3. Create directories to differentiate databases; e.g.
      - "Jensenii"
      - "Mulieris"
+    
+  Getting reference genomes into the database
+
+Install NCBI Dataset Tools
+
+    conda install -c conda-forge ncbi-datasets-cli
+
+Download L. jensenii Genome 
+
+    datasets download genome accession GCF_001936235.1
+
+Unzip the download
+
+    unzip ncbi_dataset.zip -d L_jensenii
+
+Download L. mulieris Genome
+
+    datasets download genome accession GCF_042997415.1
+
+Unzip the download
+
+    unzip ncbi_dataset.zip -d L_mulieris
+
+Create Databases
+
+    mkdir ncbi_dataset
+
+Move the files inside the dataset
+
+    mv L_jensenii/ncbi_dataset/data/GCF_001936235.1/* Jensenii_db/
+    mv L_mulieris/ncbi_dataset/data/GCF_042997415.1/* Mulieris_db/
+
 
 **Code and Test Data:**
 - Test data can be found in: L.mulieris_L.jensenii_Project/sample_dataset.txt
