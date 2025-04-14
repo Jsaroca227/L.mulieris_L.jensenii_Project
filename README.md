@@ -25,7 +25,7 @@ bash install_dependencies.sh
 ```
 - Please follow the prompts in the terminal
 
-4. Download Sylph, if not installed already using conda
+3. Download Sylph, if not installed already using conda
 
 ```
 conda install -c conda-forge -c bioconda sylph
@@ -62,9 +62,10 @@ nohup python m_sylph.py -i L.mulieris_L.jensenii_Project/sample_dataset.txt -p L
 **Overview of Wrapper:**
 
 - Arguments
-  - 2 command line arguments needed
+  - 3 command line arguments needed
     - -i SRA list .txt
     - -p reference genome database pathway
+    - -t thread count
 
 - Initialization
   - Checks for processed SRAs and reads the list of SRA IDs from input file
