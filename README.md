@@ -88,14 +88,14 @@ Move the files inside the dataset
 
 Example command to run:
 ```
-nohup python m_sylph.py -i L.mulieris_L.jensenii_Project/sample_dataset.txt -p L.mulieris_L.jensenii_Project/sylph_db/database.syldb -t 5 &
+nohup python sylph_db.py -i L.mulieris_L.jensenii_Project/sample_dataset.txt -p L.mulieris_L.jensenii_Project/sylph_db/database.syldb -t 4 &
 ```
 
 **Overview of Wrapper:**
 
 - Arguments
   - 3 command line arguments needed
-    - -i SRA list .txt
+    - -i SRA list.txt
     - -p reference genome database pathway
     - -t thread count
 
