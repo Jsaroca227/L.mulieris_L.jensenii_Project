@@ -88,7 +88,7 @@ Move the files inside the dataset
 
 Example command to run:
 ```
-nohup python sylph_db.py -i L.mulieris_L.jensenii_Project/sample_dataset.txt -p L.mulieris_L.jensenii_Project/sylph_db/database.syldb -t 4 &
+nohup python sylph_wrapper.py -i L.mulieris_L.jensenii_Project/sample_dataset.txt -p L.mulieris_L.jensenii_Project/sylph_db/database.syldb -t 4 &
 ```
 
 **Overview of Wrapper:**
