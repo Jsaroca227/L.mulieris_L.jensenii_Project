@@ -10,6 +10,8 @@ Both _L.mulleris_ and _L.jensenii_ are dominant members of the female urogenital
 - os
 - NCBI Datasets
 - Sylph
+- prefetch
+- Fasterq-Dump
 
 **Getting Started:**
 
