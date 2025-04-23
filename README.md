@@ -12,6 +12,8 @@ Both _L.mulleris_ and _L.jensenii_ are dominant members of the female urogenital
 - Sylph
 - prefetch
 - Fasterq-Dump
+- Conda
+- Bioconda
 
 **Getting Started:**
 

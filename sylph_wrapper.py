@@ -29,18 +29,20 @@ THREADS = arguments.threads
 OUTPUT_DIR = "sra_downloads"
 LOG_FILE = "processed_sra.log"
 
-# loads the processed SRAs
+# loads the processed SRAs 
 processed_sra = set()
 if os.path.exists(LOG_FILE):
     with open(LOG_FILE, "r") as log:
         processed_sra = set(log.read().splitlines())
 
+# reads the list of SRA IDs from the input file
 with open(SRA_LIST_FILE,"r") as file:
     sra_list = file.read()
     sra_list = sra_list.splitlines()
 
 SRA_LIST_LENGTH = len(sra_list)
 
+# strips any whitespace from each SRA ID
 sra_list_temp = []
 for sra in sra_list:
     sra_list_temp.append(sra.strip())
@@ -48,27 +50,32 @@ for sra in sra_list:
 sra_list = sra_list_temp
 
 flag = False
-# Looping through SRAs
+# while loop to process each SRA ID
 while True:
     for sra_id_temp in sra_list:
         processing = []
+
         # binning SRAs that have already been processed
         if os.path.exists("processing.log"):
             with open("processing.log","r") as file:
                 processing = file.read()
                 processing = processing.splitlines()
+
+        # skips SRA if it has already been processed     
         if (sra_id_temp in processed_sra) or (sra_id_temp in processing):
-            continue # skips the SRA IDs that have already been processed
+            continue 
         else:
-            sra_id = sra_id_temp
+            sra_id = sra_id_temp # finds the SRA ID to process
+
+        # exits loop if all the SRA IDs in the file have been processed     
         if set(sra_list) == processed_sra:
             flag = True
-    # if all SRAs have been processed break the loop
     if flag:
         break
 
     print(f"Processing {sra_id}...", flush = True)
-    # begin processing SRA, write SRA to log files
+
+    # logs the SRA IDs that are being processed
     with open("results.tsv","a") as file:
         file.write(sra_id + "\n")
     with open("processing.log",'a') as file:
@@ -78,7 +85,7 @@ while True:
     sra_dir = os.path.join(OUTPUT_DIR, sra_id)
     os.makedirs(sra_dir, exist_ok=True)
 
-    # downloads the SRA
+    # downloads the SRA file using prefetch
     os.system(f"prefetch {sra_id} -O {sra_dir}")
 
     # run fasterq-dump
@@ -91,13 +98,13 @@ while True:
         print(f"SRA failed to download.")
         break
     
-    # define path of the fastq files
+    # defines paths of the output fastq files
     fastq_1 = f"{sra_dir}/{sra_id}_1.fastq"
     fastq_2 = f"{sra_dir}/{sra_id}_2.fastq"
-
     single_fastq = f"{sra_dir}/{sra_id}.fastq"
 
-    # statments for debugging purposes, now supports sralite files
+    # checks if paired-end or single-end files were generated
+    # slyph is run accordingly
     if os.path.exists(fastq_1) and os.path.exists(fastq_2):
         print(f"Paired end FASTQ files generated successfully for {sra_id}!", flush = True)
         # process fastq with sylph
@@ -112,11 +119,12 @@ while True:
         print(f"FASTQ files not successfully generated for {sra_id}")
         break
 
-    # log sylph results
+    # appends the processed SRA to the log file
     with open(LOG_FILE, "a") as log:
         log.write(sra_id + "\n")
         processed_sra.add(sra_id)
     
+    #removes the just processed SRA from the processing log
     with open("processing.log", "r") as f:
         lines = f.readlines()
     with open("processing.log", "w") as f:
@@ -124,7 +132,7 @@ while True:
             if line.strip("\n") != sra_id:
                 f.write(line)
 
-    # remove SRA for free data purposes
+    # deletes the SRA directory for free data purposes
     os.system(f"rm -r {sra_dir}")
 
     print(f"Finished processing {sra_id} and removed directory.\n", flush = True)
