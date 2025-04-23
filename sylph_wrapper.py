@@ -131,7 +131,7 @@ while True:
 
     # checks if all SRAs have been processed
     if len(processed_sra) >= SRA_LIST_LENGTH:
-        print(f"All {SRA_LIST_LENGTH} SRA IDs have been processed.", flush = True)
+        print(f"All {len(processed_sra)} SRA IDs have been processed.", flush = True)
         break
 
 print("Test complete!", flush = True)
