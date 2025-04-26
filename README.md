@@ -1,8 +1,8 @@
-**Are _Lactobacillus mulieris_ and _Lactobacillus jensenii_ present in the gastrointestinal (GI) tract?**
+**Are _Lactobacillus mulieris_ and _Lactobacillus jensenii_ present in the gastrointestinal tract?**
 
 **Introduction:**
 
-Both _L.mulleris_ and _L.jensenii_ are dominant members of the female urogenital microbiome. _L.mulleris_ is a recently recognized species, however, they share identical 16S rRNA sequences. This project aims to assess whether these species are also present in the gastrointestinal tract. The interest of these species in the GI tract is important as _L.jensenii_ helps the body digest food and absorb nutrients. 
+Both _L.mulleris_ and _L.jensenii_ are dominant members of the female urogenital microbiome. _L.mulleris_ is a recently recognized species, however, they share identical 16S rRNA sequences. This project aims to assess whether these species are also present in the gastrointestinal (GI) tract. The interest of these species in the GI tract is important as _L.jensenii_ helps the body digest food and absorb nutrients. 
 
 **Dependencies:**
 - argparse
@@ -88,7 +88,7 @@ Move the files inside the dataset
 
 **Code and Test Data:**
 - Test data can be found in: L.mulieris_L.jensenii_Project/sample_dataset.txt
-- Code can be found in: L.mulieris_L.jensenii_Project/m_sylph.py
+- Code can be found in: L.mulieris_L.jensenii_Project/sylph_wrapper.py
 
 Example command to run:
 ```
