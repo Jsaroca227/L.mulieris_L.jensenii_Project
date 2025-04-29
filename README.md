@@ -27,7 +27,7 @@ git clone https://github.com/Jsaroca227/L.mulieris_L.jensenii_Project.git
 ```
 bash install_dependencies.sh
 ```
-- Please follow the prompts in the terminal
+- Please follow the prompts in the terminal!
 
 3. Download Sylph, if not installed already using conda
 
@@ -49,42 +49,27 @@ NCBI link for _L. mulieris_: https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_04
 
 Instructions to download the reference genome:
   1. Copy and paste the command from the "Dataset" tab of the NCBI link
-  2. Unzip the dataset: unzip.ncbi_dataset
-  3. Create directories to differentiate databases; e.g.
-     - "Jensenii"
-     - "Mulieris"
-    
-  Getting reference genomes into the database
+```
+datasets download genome accession GCF_001936235.1
+```
 
-Install NCBI Dataset Tools
+```
+datasets download genome accession GCF_042997415.1
+```
 
-    conda install -c conda-forge ncbi-datasets-cli
-
-Download L. jensenii Genome 
-
-    datasets download genome accession GCF_001936235.1
-
-Unzip the download
-
-    unzip ncbi_dataset.zip -d L_jensenii
-
-Download L. mulieris Genome
-
-    datasets download genome accession GCF_042997415.1
-
-Unzip the download
-
-    unzip ncbi_dataset.zip -d L_mulieris
-
-Create Databases
-
-    mkdir ncbi_dataset
-
-Move the files inside the dataset
-
-    mv L_jensenii/ncbi_dataset/data/GCF_001936235.1/* Jensenii_db/
-    mv L_mulieris/ncbi_dataset/data/GCF_042997415.1/* Mulieris_db/
-
+  3. Unzip the dataset
+```
+unzip.ncbi_dataset
+```
+  4. Create directories for the database
+```
+mkdir ncbi_dataset
+```
+  5. Move the files inside the dataset
+```
+ mv L_jensenii/ncbi_dataset/data/GCF_001936235.1/* Jensenii_db/
+ mv L_mulieris/ncbi_dataset/data/GCF_042997415.1/* Mulieris_db/
+```
 
 **Code and Test Data:**
 - Test data can be found in: L.mulieris_L.jensenii_Project/sample_dataset.txt
@@ -111,15 +96,16 @@ nohup python sylph_wrapper.py -i L.mulieris_L.jensenii_Project/sample_dataset.tx
   - Begins to process through SRA ID in the list
 
 - Download and convert SRA to FASTQ
-  - Utlizie prefetch to download the SRA file and utlize fasterq-dump to convert the SRA file to FASTQ format
+  - Utlizie prefetch to download the SRA file and utlize fasterq-dump to convert the SRA file to FASTQ file(s) format
 
 - Sylph and ANI Profiling
-  - Utilize sylph sketch to generate sketches from the FASTQ files and runs sylph query to compare sketch against the reference genome database
+  - Utilize sylph sketch to generate sketches from the FASTQ file(s) and run sylph profile to compare sketch against the reference genome database
     - Output of ANI score to results.tsv
 
 - Processed SRA IDs
   - Updates processed_sra.log with completed SRA ID
-  - Removes SRA directory to free up space
+  - Updates results.tsv with SRA ID, Sylph header and correpsonding results
+  - Removes SRA ID files to free up space
 
 - Repetition
   - Continues processing all SRA IDs in the list until it is completed 
