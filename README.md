@@ -120,6 +120,6 @@ nohup python sylph_wrapper.py -i L.mulieris_L.jensenii_Project/sample_dataset.tx
 
 **Overview of Output Files:**
 
-1. lacto_db.tsv: lists the SRA ID with the corresponding Sylph header and ANI results against the _Lactobacillus mulieris_ and _Lactobacillus jensenii_ database
-2. ecoli_db.tsv: lists the SRA ID with the corresponding Sylph header and ANI results against the _E.coli_ database
+1. lacto_results.tsv: lists the SRA ID with the corresponding Sylph header and ANI results against the _Lactobacillus mulieris_ and _Lactobacillus jensenii_ database
+2. ecoli_results.tsv: lists the SRA ID with the corresponding Sylph header and ANI results against the _E.coli_ database
 
