@@ -1,8 +1,8 @@
 **Are _Lactobacillus mulieris_ and _Lactobacillus jensenii_ present in the gastrointestinal tract?**
 
-**Introduction:**
+**Background:**
 
-Both _L.mulleris_ and _L.jensenii_ are dominant members of the female urogenital microbiome. _L.mulleris_ is a recently recognized species, however, they share identical 16S rRNA sequences. This project aims to assess whether these species are also present in the gastrointestinal (GI) tract. The interest of these species in the GI tract is important as _L.jensenii_ helps the body digest food and absorb nutrients. 
+Both _L.mulleris_ and _L.jensenii_ are dominant members of the female urogenital microbiome. _L.mulleris_ is a recently recognized species, however, they share identical 16S rRNA sequences. This project aims to assess whether these species are also present in the gastrointestinal (GI) tract. The interest of these species in the GI tract is important as _L.jensenii_ helps the body digest food and absorb nutrients.
 
 **Dependencies:**
 - argparse
@@ -75,7 +75,7 @@ mkdir ncbi_dataset
 - Test data can be found in: L.mulieris_L.jensenii_Project/sample_dataset.txt
 - Code can be found in: L.mulieris_L.jensenii_Project/sylph_wrapper.py
 
-Example command to run in the background:
+Command to run wrapper in the background:
 ```
 nohup python sylph_wrapper.py -i L.mulieris_L.jensenii_Project/sample_dataset.txt -p L.mulieris_L.jensenii_Project/sylph_db/database.syldb -t 4 &
 ```
@@ -103,16 +103,19 @@ nohup python sylph_wrapper.py -i L.mulieris_L.jensenii_Project/sample_dataset.tx
     - Output of ANI score to results.tsv
 
 - Processed SRA IDs
-  - Updates processed_sra.log with completed SRA ID
-  - Updates results.tsv with SRA ID, Sylph header and correpsonding results
+  - Updates processed_sra.log
+    - Processed_sra.log: lists the SRA ID that has been processed and completed from the file
+  - Updates lacto_db.tsv with SRA ID, Sylph header and correpsonding results
   - Removes SRA ID files to free up space
 
+
 - Repetition
-  - Continues processing all SRA IDs in the list until it is completed 
+  - Continues processing all SRA IDs in the list until it is completed
+  - As the script progreseses, processing.log is updated
+    - Processing.log: lists the SRA ID that is currently being processed in real time
 
 **Overview of Output Files:**
 
-1. Processed_sra.log: lists the SRA ID that has been processed and completed from the file
-2. Processing.log: lists the SRA ID that is currently being processed in real time
-3. Result.tsv: lists the SRA ID with the corresponding Sylph, ANI results
+1. lacto_db.tsv: lists the SRA ID with the corresponding Sylph header and ANI results against the _Lactobacillus mulieris_ and _Lactobacillus jensenii_ database
+2. ecoli_db.tsv: lists the SRA ID with the corresponding Sylph header and ANI results against the _E.coli_ database
 
