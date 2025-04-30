@@ -70,6 +70,10 @@ mkdir ncbi_dataset
  mv L_jensenii/ncbi_dataset/data/GCF_001936235.1/* Jensenii_db/
  mv L_mulieris/ncbi_dataset/data/GCF_042997415.1/* Mulieris_db/
 ```
+  6. Sketch the reference genomes to one database
+```
+sylph sketch Jensenii_db/*.fna Mulieris_db/*.fna
+```
 
 **Code and Test Data:**
 - Test data can be found in: L.mulieris_L.jensenii_Project/sample_dataset.txt
