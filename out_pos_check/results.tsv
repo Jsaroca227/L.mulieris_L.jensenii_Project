@@ -1,6 +1,0 @@
-SRR26087528
-Sample_file	Genome_file	Taxonomic_abundance	Sequence_abundance	Adjusted_ANI	True_cov	ANI_5-95_percentile	Eff_lambda	Lambda_5-95_percentile	Median_cov	Mean_cov_geq1	Containment_ind	Naive_ANI	kmers_reassigned	Contig_name
-sra_downloads/SRR26087528/SRR26087528_1.fastq	mulieris/GCA_042996645.1_ASM4299664v1_genomic.fna	100.0000	100.0000	97.94	239.455	NA-NA	HIGH	NA-NA	140	145.422	11179/21288	97.94	0	CP160089.1 Lactobacillus mulieris strain 294_F1_4-1 chromosome, complete genome
-SRR29713985
-Sample_file	Genome_file	Taxonomic_abundance	Sequence_abundance	Adjusted_ANI	True_cov	ANI_5-95_percentile	Eff_lambda	Lambda_5-95_percentile	Median_cov	Mean_cov_geq1	Containment_ind	Naive_ANI	kmers_reassigned	Contig_name
-sra_downloads/SRR29713985/SRR29713985_1.fastq	jensenii/GCA_042997765.1_ASM4299776v1_genomic.fna	100.0000	96.4966	99.93	138.610	NA-NA	HIGH	NA-NA	81	81.667	19822/20257	99.93	0	CP160087.1 Lactobacillus jensenii strain 0422_293_1_1_MRS1 chromosome, complete genome
