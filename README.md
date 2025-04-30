@@ -43,9 +43,12 @@ Sylph Toolkit: https://sylph-docs.github.io/sylph-cookbook/
 
 NCBI link for _L.jensenii_: https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_001936235.1/
 
-NCBI link for _L. mulieris_: https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_042997415.1/
+NCBI link for _L.mulieris_: https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_042997415.1/
+
+NCBI link for _E.coli_: https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000005845.2/
 
 - If you would like to use this wrapper for your own purposes, proceed with these following steps
+   - These steps can be repeated to create the _E.coli_ database
 
 Instructions to download the reference genome:
   1. Copy and paste the command from the "Dataset" tab of the NCBI link
