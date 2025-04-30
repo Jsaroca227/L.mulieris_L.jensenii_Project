@@ -75,7 +75,7 @@ mkdir ncbi_dataset
 - Test data can be found in: L.mulieris_L.jensenii_Project/sample_dataset.txt
 - Code can be found in: L.mulieris_L.jensenii_Project/sylph_wrapper.py
 
-Example command to run:
+Example command to run in the background:
 ```
 nohup python sylph_wrapper.py -i L.mulieris_L.jensenii_Project/sample_dataset.txt -p L.mulieris_L.jensenii_Project/sylph_db/database.syldb -t 4 &
 ```
